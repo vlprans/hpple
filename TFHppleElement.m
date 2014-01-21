@@ -114,8 +114,9 @@ static NSString * const TFHppleTextNodeName            = @"text";
 {
   NSMutableDictionary * translatedAttributes = [NSMutableDictionary dictionary];
   for (NSDictionary * attributeDict in [node objectForKey:TFHppleNodeAttributeArrayKey]) {
-      if ([attributeDict objectForKey:TFHppleNodeContentKey] && [attributeDict objectForKey:TFHppleNodeAttributeNameKey]) {
-          [translatedAttributes setObject:[attributeDict objectForKey:TFHppleNodeContentKey]
+      if ([attributeDict objectForKey:TFHppleNodeAttributeNameKey]) {
+          NSString *attrValue = [attributeDict objectForKey:TFHppleNodeContentKey];
+          [translatedAttributes setObject:(attrValue ? attrValue : @YES)
                                    forKey:[attributeDict objectForKey:TFHppleNodeAttributeNameKey]];
       }
   }
